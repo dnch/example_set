@@ -16,6 +16,15 @@ describe "An ExampleSet" do
       @example_set.outputs = :a
       @example_set.outputs.should == [:a]
     end
+    
+    it "should allow users to define their and outputs using a hash" do      
+      examples = { :a => :x, :b => :y, :c => :z }
+
+      @example_set = ExampleSet.new(examples)
+      @example_set.compare do |input, expected_output|
+        expected_output.should == examples[input]
+      end
+    end
 
     it "should iterate over each input / expected output as a set of pairs in matched sequence" do
       inputs  = [:a, :b, :c]

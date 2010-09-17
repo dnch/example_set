@@ -1,9 +1,9 @@
 class ExampleSet
   attr_reader :inputs, :outputs
   
-  def initialize
-    @inputs  = []
-    @outputs = []
+  def initialize(init_hash = {})
+    @inputs  = init_hash.keys
+    @outputs = init_hash.values
   end
   
   # Give the user some flexibility in the way they 
